@@ -9,10 +9,12 @@ const Controlado = () => {
     const [description, setDescription] = useState('');
     const [state, setState] = useState('pendiente');*/
 
+    //acá defino los campos segun el "name" del campo en el input del formulario 
     const [todo, setTodo] = useState({
         title: "Todo #1",
         description: "Descripcion #1",
-        state: "pendiente"
+        state: "pendiente",
+        priority: true
     });
 
 
@@ -42,6 +44,13 @@ const Controlado = () => {
             <input type="text" placeholder="To do" className="form-control mb-2" name="title" value={todo.title} onChange={handleChange} />
 
             <textarea className="form-control mb-2" placeholder="Ingrese Texto" name="description" value={todo.description} onChange={handleChange}></textarea>
+
+            <div className="form-checked mb-2">
+                <input type="checkbox" name="priority" className="form-checked-input me-2" id="inputCheck" checked={todo.priority} onChange={ e=> setTodo({...todo, priority: e.target.checked}) }/>
+                <label htmlFor="inputCheck">Dar prioridad</label>
+
+            </div>
+
 
             <select className="form-select mb-2" name="state" value={todo.state} onChange={handleChange}>
                 <option value="pendiente">Pendiente</option>
