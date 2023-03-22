@@ -1,5 +1,5 @@
 # REACT
-Esto es una practica de formularios controlados, no controlados, useStates, onClick, onChange, etc.
+Esto es una practica de formularios controlados, no controlados, useStates, Hooks, onClick, onChange, etc.
 
 Apenas importo el proyecto en una nueva pc tengo que correr
 
