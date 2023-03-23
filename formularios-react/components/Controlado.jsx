@@ -17,10 +17,12 @@ const Controlado = () => {
         priority: true
     });
 
+    //desestructurando el objeto todo , extrayendo sus propiedades y usando estas propiedades en los metodos
+    const { title, description, state, priority } = todo
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(todo.title, todo.description, todo.state);
+        console.log(title, description, state);
     };
 
     //Reutilizar el onChange
@@ -37,11 +39,16 @@ const Controlado = () => {
             ...todo, [e.target.name]: e.target.value
         })
 */
+
+        //Voy a desestructurar el objeto e.target (sería el campo del formulario en el que estoy para extraer sus propiedades)
+
+        const { name, type, checked, value } = e.target
+
         setTodo({
-            ...todo, [e.target.name]:
-                e.target.type === 'checkbox'
-                    ? e.target.checked
-                    : e.target.value,
+            ...todo, [name]:
+                type === 'checkbox'
+                    ? checked
+                    : value,
         })
 
     }
@@ -50,18 +57,18 @@ const Controlado = () => {
 
         <form onSubmit={handleSubmit}>
 
-            <input type="text" placeholder="To do" className="form-control mb-2" name="title" value={todo.title} onChange={handleChange} />
+            <input type="text" placeholder="To do" className="form-control mb-2" name="title" value={title} onChange={handleChange} />
 
-            <textarea className="form-control mb-2" placeholder="Ingrese Texto" name="description" value={todo.description} onChange={handleChange}></textarea>
+            <textarea className="form-control mb-2" placeholder="Ingrese Texto" name="description" value={description} onChange={handleChange}></textarea>
 
             <div className="form-checked mb-2">
-                <input type="checkbox" name="priority" className="form-checked-input me-2" id="inputCheck" checked={todo.priority} onChange={handleChange} />
+                <input type="checkbox" name="priority" className="form-checked-input me-2" id="inputCheck" checked={priority} onChange={handleChange} />
                 <label htmlFor="inputCheck">Dar prioridad</label>
 
             </div>
 
 
-            <select className="form-select mb-2" name="state" value={todo.state} onChange={handleChange}>
+            <select className="form-select mb-2" name="state" value={state} onChange={handleChange}>
                 <option value="pendiente">Pendiente</option>
                 <option value="completado">Completado</option>
             </select>
