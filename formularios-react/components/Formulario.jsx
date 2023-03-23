@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 //Para trabajar con formularios controlados lo primero es hacer estados para cada uno de nuestros campos input
-const Controlado = () => {
+const Formulario = () => {
 
     //solo para recordar title es la variable digamos, setTitle es el metodo que modifica esa variable y 
     //entre ('') es el valor inicial en el que arranca la variable
@@ -81,4 +81,4 @@ const Controlado = () => {
 }
 
 
-export default Controlado;
+export default Formulario;
