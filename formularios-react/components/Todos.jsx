@@ -3,8 +3,8 @@ const Todos = ({ todos }) => {
 
 
     return (
-        <div>
-            <h2>Todos</h2>
+        <div className="mt-5">
+            <h2 className="text-center">Todos</h2>
             <ul>
                 {
                     todos.map(todo => (
