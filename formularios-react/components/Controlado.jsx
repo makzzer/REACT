@@ -30,10 +30,19 @@ const Controlado = () => {
         //yo ya recibo el nombre de la propiedad en el e.target.name, entonces solo me queda
         //pasarlo como parametro y lo puedo hacer de la siguiente manera
 
+        //e=> setTodo({...todo, priority: e.target.checked})
+
+        /* lo siguiente sería sin el operador ternario, ahora para reciclar el onChange completo le agrego el if en forma de operador ternario
         setTodo({
             ...todo, [e.target.name]: e.target.value
         })
-
+*/
+        setTodo({
+            ...todo, [e.target.name]:
+                e.target.type === 'checkbox'
+                    ? e.target.checked
+                    : e.target.value,
+        })
 
     }
 
@@ -46,7 +55,7 @@ const Controlado = () => {
             <textarea className="form-control mb-2" placeholder="Ingrese Texto" name="description" value={todo.description} onChange={handleChange}></textarea>
 
             <div className="form-checked mb-2">
-                <input type="checkbox" name="priority" className="form-checked-input me-2" id="inputCheck" checked={todo.priority} onChange={ e=> setTodo({...todo, priority: e.target.checked}) }/>
+                <input type="checkbox" name="priority" className="form-checked-input me-2" id="inputCheck" checked={todo.priority} onChange={handleChange} />
                 <label htmlFor="inputCheck">Dar prioridad</label>
 
             </div>
