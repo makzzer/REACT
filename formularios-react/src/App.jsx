@@ -32,7 +32,7 @@ const App = () => {
   //voy a inicializar un state para las tareas, las eliminadas, creadas, editadas, todo lo qeu sea tareas
   //lo inicializo con un array vacio eso es el useState([])
   //ya sabemos dentro del useState lo primero es la variable o el objeto, y lo segundo el metodo que modifica a ese objeto
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(initialStateTodos)
 
   //al Todos le mando todos como props
   //el primero es la propiedad y el segundo entre {} es el valor --> todos={todos}
