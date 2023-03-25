@@ -35,12 +35,16 @@ const App = () => {
   //ya sabemos dentro del useState lo primero es la variable o el objeto, y lo segundo el metodo que modifica a ese objeto
   const [todos, setTodos] = useState(initialStateTodos)
 
+  //acá voy a hacer el estado global para la funcion de agregar Todos
+  const addTodo = todo => setTodos([...todos,todo])
+  //el addTodo tiene que viajar al formulario
+
   //al Todos le mando todos como props
   //el primero es la propiedad y el segundo entre {} es el valor --> todos={todos}
   return (
     <div className="container mb-2">
       <h1 className="my-5">Formulario</h1>
-      <Formulario />
+      <Formulario addTodo={addTodo} />
       <Todos todos={todos} />
 
     </div>

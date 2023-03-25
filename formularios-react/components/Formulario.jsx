@@ -5,7 +5,7 @@ import { useState } from "react";
 
 
 //Para trabajar con formularios controlados lo primero es hacer estados para cada uno de nuestros campos input
-const Formulario = () => {
+const Formulario = ({ addTodo }) => {
 
     //solo para recordar title es la variable digamos, setTitle es el metodo que modifica esa variable y 
     //entre ('') es el valor inicial en el que arranca la variable
@@ -27,6 +27,7 @@ const Formulario = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        //lo siguente es lo mismo que title.trim()==="" , osea si el campo está vacio
         if (!title.trim() || !description.trim()) {
             //hago el siguiente return para que no siga con el codigo si encontró error
 
@@ -35,10 +36,42 @@ const Formulario = () => {
                 title: 'Oops...',
                 text: 'No completaste titulo ni descripcion rey',
 
-              })
+            })
 
         }
+
+        //acá programo el addTodo
+        addTodo({
+            //lo siguiente nos devuelve un numero desde 1970 con una milesima de segundos, solucion temporal para generar ids aleatorios
+            id: Date.now(),
+            //en lo siguiente hago una copia del todo que se está agregando, está mas arriba este todo
+            ...todo,
+            //lo siguiente va a devolver true o false
+            state: state === 'completado'
+        })
+
+        swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Tarea agregada correctamente perrito malvado',
+            showConfirmButton: false,
+            timer: 1500
+        })
+
+
         console.log(title, description, state);
+
+
+        //el nuevo todo hay que construirlo porque las propiedades no son iguales entre todos
+
+
+
+
+
+
+
+
+
     };
 
     //Reutilizar el onChange
