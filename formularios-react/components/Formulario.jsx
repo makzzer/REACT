@@ -1,4 +1,8 @@
+import swal from 'sweetalert2/dist/sweetalert2.all.min.js'
+
 import { useState } from "react";
+
+
 
 //Para trabajar con formularios controlados lo primero es hacer estados para cada uno de nuestros campos input
 const Formulario = () => {
@@ -22,6 +26,18 @@ const Formulario = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        if (!title.trim() || !description.trim()) {
+            //hago el siguiente return para que no siga con el codigo si encontró error
+
+            return swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'No completaste titulo ni descripcion rey',
+
+              })
+
+        }
         console.log(title, description, state);
     };
 
@@ -73,7 +89,7 @@ const Formulario = () => {
                 <option value="completado">Completado</option>
             </select>
 
-            <button type="submit" className="btn btn-primary">Procesar</button>
+            <button type="submit" className="btn btn-primary">Agregar Tarea</button>
 
 
         </form>

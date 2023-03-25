@@ -2,6 +2,7 @@ import { useState } from "react";
 import Formulario from "../components/Formulario";
 import Todos from "../components/Todos";
 
+
 //recomienda inicializar el state para que cada vez que renderiza el componente no se esta creando el state
 const initialStateTodos = [
   {
