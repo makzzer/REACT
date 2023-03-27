@@ -60,13 +60,23 @@ const App = () => {
     setTodos(newArray)
   }
 
+  //metodo para ordenar todos osea las tareas
+  const orderTodo = arrayTodos => {
+    return arrayTodos.sort((a, b) => {
+      if (a.priority == b.priority) return 0;
+      if (a.priority === true) return -1;
+      if (a.priority === false) return 1;
+    })
+  }
+
+
   //al Todos le mando todos como props
   //el primero es la propiedad y el segundo entre {} es el valor --> todos={todos}
   return (
     <div className="container mb-2">
       <h1 className="my-5">Formulario</h1>
       <Formulario addTodo={addTodo} />
-      <Todos todos={todos} deleteTodo={deleteTodo} actualizarTodo={actualizarTodo}/>
+      <Todos todos={orderTodo(todos)} deleteTodo={deleteTodo} actualizarTodo={actualizarTodo} />
 
     </div>
   );
