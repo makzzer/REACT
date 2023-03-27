@@ -36,7 +36,7 @@ const App = () => {
   const [todos, setTodos] = useState(initialStateTodos)
 
   //acá voy a hacer el estado global para la funcion de agregar Todos
-  const addTodo = todo => setTodos([...todos,todo])
+  const addTodo = todo => setTodos([...todos, todo])
   //el addTodo tiene que viajar al formulario
 
   //recibe como parametro el id
@@ -45,8 +45,19 @@ const App = () => {
   //el deleteTodo tiene que viajar por los componentes todo y todos tambien, porque en todos el todo ejecuta la funcion
   //y en todo está el botón como tal que usa el metodo
   const deleteTodo = id => {
-  const newArray = todos.filter(todo => todo.id !== id)
-  setTodos(newArray)
+    const newArray = todos.filter(todo => todo.id !== id)
+    setTodos(newArray)
+  }
+
+  //todo.state = !todo.state; significa---> entonces el todo.state va a ser igual a lo contrario que tenga en el momento, si es true, va a ser false
+  const actualizarTodo = id => {
+    const newArray = todos.map(todo => {
+      if (todo.id === id) {
+        todo.state = !todo.state;
+      }
+      return todo
+    })
+    setTodos(newArray)
   }
 
   //al Todos le mando todos como props
@@ -55,7 +66,7 @@ const App = () => {
     <div className="container mb-2">
       <h1 className="my-5">Formulario</h1>
       <Formulario addTodo={addTodo} />
-      <Todos todos={todos} deleteTodo={deleteTodo}/>
+      <Todos todos={todos} deleteTodo={deleteTodo} actualizarTodo={actualizarTodo}/>
 
     </div>
   );

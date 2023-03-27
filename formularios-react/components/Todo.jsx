@@ -1,4 +1,4 @@
-const Todo = ({ todo, deleteTodo }) => {
+const Todo = ({ todo, deleteTodo, actualizarTodo }) => {
 
     const { id, title, description, state, priority } = todo
 
@@ -13,8 +13,8 @@ const Todo = ({ todo, deleteTodo }) => {
                     <h5 className={`${state && 'text-decoration-line-through'}`}>{title}</h5>
                     <p className={`${state && 'text-decoration-line-through'}`}>{description}</p>
                     <div className="d-flex gap-2">
-                        <button onClick={()=>{deleteTodo(id)}} className="btn btn-sm btn-danger">Eliminar</button>
-                        <button className="btn btn-sm btn-warning">Actualizar</button>
+                        <button onClick={() => { deleteTodo(id) }} className="btn btn-sm btn-danger">Eliminar</button>
+                        <button onClick={() => { actualizarTodo(id) }} className="btn btn-sm btn-warning">Actualizar</button>
                     </div>
                 </div>
                 <span className="badge badge-pill bg-primary">{priority && "Prioritario"}</span>

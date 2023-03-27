@@ -1,7 +1,7 @@
 import Todo from "./Todo";
 
 //le paso como props los todos
-const Todos = ({ todos, deleteTodo }) => {
+const Todos = ({ todos, deleteTodo, actualizarTodo }) => {
 
 
     return (
@@ -12,7 +12,7 @@ const Todos = ({ todos, deleteTodo }) => {
                     todos.map(todo => (
                         //<li key={todo.id}> {todo.title} </li>
                         //Hay que pasa r la key de forma obligatoria
-                        <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} />
+                        <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} actualizarTodo={actualizarTodo} />
                     ))}
 
                 {todos.length === 0 && (<li className="list-group-item text-center">Sin tareas pendientes</li>)
