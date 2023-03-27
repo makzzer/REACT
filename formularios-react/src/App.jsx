@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import Formulario from "../components/Formulario";
 import Todos from "../components/Todos";
@@ -32,7 +33,12 @@ const initialStateTodos = [
 ]
 */
 
-const initialStateTodos = []
+//así inicializo con un array vacio pero lo voy a hacer como localStorage
+//const initialStateTodos = []
+
+//pregunto primero si existe algo en localStorage (esto es para que se mantenga en el navegador)
+//este initialState tiene que estar fuera del componente asi se manda a llamar antes de que empiece la logica de React
+const initialStateTodos = JSON.parse(localStorage.getItem('todos')) || [];
 
 const App = () => {
 
@@ -40,6 +46,17 @@ const App = () => {
   //lo inicializo con un array vacio eso es el useState([])
   //ya sabemos dentro del useState lo primero es la variable o el objeto, y lo segundo el metodo que modifica a ese objeto
   const [todos, setTodos] = useState(initialStateTodos)
+
+
+  //Nuevo Hook, cada vez que un estado cambie, nosotros podemos ejecutar una accion con el useEffect
+  //siempre se va a ejecutar en el primer renedrizado
+  //Entre corchetes le voy a pasar los todos, osea le voy a decir "vas a ejecutar el useEffect cada vez que se modifiquen,eliminen o agreguen los todos"
+  //Voy a usar el useEffect para guardar los cambios en el localstorage del navegador
+  //localStorage solo recibe strings y yo tengo un array, por eso lo parseo como JSON
+  useEffect(() => {
+    localStorage.setItem('todos',JSON.stringify(todos))
+  },[todos]);
+
 
   //acá voy a hacer el estado global para la funcion de agregar Todos
   const addTodo = todo => setTodos([...todos, todo])
