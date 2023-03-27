@@ -34,7 +34,7 @@ const Formulario = ({ addTodo }) => {
             return swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'No completaste titulo ni descripcion rey',
+                text: 'No completaste Titulo ni o Descripcion Rey',
 
             })
 
@@ -53,7 +53,7 @@ const Formulario = ({ addTodo }) => {
         swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Tarea agregada correctamente perrito malvado',
+            title: 'Tarea agregada correctamente Perrito Malvado',
             showConfirmButton: false,
             timer: 1500
         })

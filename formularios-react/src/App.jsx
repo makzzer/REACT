@@ -39,13 +39,23 @@ const App = () => {
   const addTodo = todo => setTodos([...todos,todo])
   //el addTodo tiene que viajar al formulario
 
+  //recibe como parametro el id
+  //filtra el arreglo de todos con todo lo que no sea el id de la tarea seleccionada 
+  //despues le pasa ese nuevo array sin la tarea al setTodos
+  //el deleteTodo tiene que viajar por los componentes todo y todos tambien, porque en todos el todo ejecuta la funcion
+  //y en todo está el botón como tal que usa el metodo
+  const deleteTodo = id => {
+  const newArray = todos.filter(todo => todo.id !== id)
+  setTodos(newArray)
+  }
+
   //al Todos le mando todos como props
   //el primero es la propiedad y el segundo entre {} es el valor --> todos={todos}
   return (
     <div className="container mb-2">
       <h1 className="my-5">Formulario</h1>
       <Formulario addTodo={addTodo} />
-      <Todos todos={todos} />
+      <Todos todos={todos} deleteTodo={deleteTodo}/>
 
     </div>
   );
