@@ -34,7 +34,7 @@ const Formulario = ({ addTodo }) => {
             return swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'No completaste Titulo ni o Descripcion Rey',
+                text: 'No completaste titulo o descripcion Rey',
 
             })
 

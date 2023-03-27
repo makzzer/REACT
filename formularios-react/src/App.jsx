@@ -4,6 +4,9 @@ import Todos from "../components/Todos";
 
 
 //recomienda inicializar el state para que cada vez que renderiza el componente no se esta creando el state
+//Ejemplo de state con algunas tareas, voy a usar uno vacio sin tareas luego
+
+/*
 const initialStateTodos = [
   {
     id: 1,
@@ -27,6 +30,9 @@ const initialStateTodos = [
     priority: true,
   },
 ]
+*/
+
+const initialStateTodos = []
 
 const App = () => {
 
